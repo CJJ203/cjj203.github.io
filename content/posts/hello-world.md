@@ -8,3 +8,9 @@ tags: ["tech"]
 
 ```python
 print("code highlight works")
+
+测试公式
+
+$$
+E = mc^2
+$$
