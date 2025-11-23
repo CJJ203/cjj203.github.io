@@ -116,6 +116,23 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">博客搭建指南
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>博客搭建指南 欢迎阅读本博客搭建指南！本文将指导你如何使用 Hugo 和 PaperMod 主题来创建一个漂亮且功能强大的个人博客。
+🚀 一、安装 Hugo brew install hugo 查看是否安装成功：
+hugo version 📂 二、创建你的博客项目 hugo new site myblog cd myblog 🎨 三、安装 PaperMod 主题 git init git submodule add https://github.com/adityatelange/hugo-PaperMod themes/PaperMod 然后修改 hugo.toml：
+theme = &#34;PaperMod&#34; 📝 四、最终配置 baseURL = &#34;https://{{github_username}}.github.io/&#34; languageCode = &#34;zh-cn&#34; title = &#34;CaiJJ&#39;s Blog&#34; theme = &#34;PaperMod&#34; [params] defaultTheme = &#34;auto&#34; showReadingTime = true showCodeCopyButtons = true showToc = true [outputs] home = [&#34;HTML&#34;, &#34;RSS&#34;, &#34;JSON&#34;] 这个配置：
+自动支持亮/暗模式 首页支持 RSS &#43; JSON（给搜索引擎 &amp; 搜索插件用） 显示阅读时间 功能干净不累赘 ✍️ 五、创建你的第一篇文章 hugo new posts/hello-world.md 打开生成的： content/posts/hello-world.md 文件，编辑内容：
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-11-23 00:00:00 +0000 UTC'>November 23, 2025</span>&nbsp;·&nbsp;<span>2 min</span></footer>
+  <a class="entry-link" aria-label="post link to 博客搭建指南" href="http://localhost:1313/posts/20251123-blog-tutorial/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hello World
     </h2>
   </header>
