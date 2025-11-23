@@ -2,6 +2,7 @@
 title: "Hello World"
 date: 2025-01-01
 tags: ["tech"]
+math: true
 ---
 
 使用 PaperMod 的第一篇 Hugo 博文！
@@ -11,6 +12,8 @@ print("code highlight works")
 
 ```
 
-测试公式
+这是行内公式：$a^2 + b^2 = c^2$
 
-$$E = mc^2$$
+$$
+\int_0^\infty e^{-x} dx = 1
+$$

@@ -8,6 +8,7 @@ theme = "PaperMod"
   showReadingTime = true
   showCodeCopyButtons = true
   showToc = true
+  math = true
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
