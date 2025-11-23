@@ -1,0 +1,13 @@
+baseURL = "https://cjj203.github.io/"
+languageCode = "zh-cn"
+title = "CaiJJ's Blog"
+theme = "PaperMod"
+
+[params]
+  defaultTheme = "auto"
+  showReadingTime = true
+  showCodeCopyButtons = true
+  showToc = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
