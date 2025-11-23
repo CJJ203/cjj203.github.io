@@ -2,7 +2,7 @@
 title: "Hello World"
 date: 2025-01-01
 tags: ["tech"]
-math: true
+katex: true
 ---
 
 使用 PaperMod 的第一篇 Hugo 博文！

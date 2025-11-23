@@ -3,6 +3,15 @@ languageCode = "zh-cn"
 title = "CaiJJ's Blog"
 theme = "PaperMod"
 
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)']]
+
 [params]
   defaultTheme = "auto"
   showReadingTime = true

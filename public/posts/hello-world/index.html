@@ -9,7 +9,10 @@
 <meta name="keywords" content="tech">
 <meta name="description" content="使用 PaperMod 的第一篇 Hugo 博文！
 print(&#34;code highlight works&#34;)
-">
+这是行内公式：$a^2 &#43; b^2 = c^2$
+$$
+\int_0^\infty e^{-x} dx = 1
+$$">
 <meta name="author" content="">
 <link rel="canonical" href="http://localhost:1313/posts/hello-world/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.a5781257de4197b8e3d54346acdf1dd55a9ba4cb91dcace192fc1baf228c08b5.css" integrity="sha256-pXgSV95Bl7jj1UNGrN8d1VqbpMuR3KzhkvwbryKMCLU=" rel="preload stylesheet" as="style">
@@ -72,7 +75,17 @@ print(&#34;code highlight works&#34;)
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script>
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css" integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js" integrity="sha384-g7c+Jr9ZivxKLnZTDUhnkOnsh30B4H0rpLUpJ4jAIKs4fnJI+sEnkvrMWph2EDg4" crossorigin="anonymous"></script>
+
+
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js" integrity="sha384-mll67QQFJfxn0IYznZYonOWZ644AWYC+Pt2cHqMaRhXVrursRwvLnLaebdGIlYNa" crossorigin="anonymous"
+    onload="document.addEventListener('DOMContentLoaded', function() { renderMathInElement(document.body, { delimiters: [ {left: '$$', right: '$$', display: true}, {left: '\\(', right: '\\)', display: false}, {left: '$', right: '$', display: false} ] }); });"></script>
+
+
+
 </head>
 <body id="top">
     <header class="header">
@@ -121,7 +134,10 @@ print(&#34;code highlight works&#34;)
 
   <div class="post-content"><p>使用 PaperMod 的第一篇 Hugo 博文！</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;code highlight works&#34;</span>)
-</span></span></code></pre></div>
+</span></span></code></pre></div><p>这是行内公式：$a^2 + b^2 = c^2$</p>
+$$
+\int_0^\infty e^{-x} dx = 1
+$$
 
   </div>
 
