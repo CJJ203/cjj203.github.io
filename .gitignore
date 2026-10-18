@@ -1,2 +1,4 @@
 # Ignore Hugo generated files
 /public/
+# Hugo build lock
+.hugo_build.lock

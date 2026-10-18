@@ -18,6 +18,8 @@ theme = "PaperMod"
   showCodeCopyButtons = true
   showToc = true
   math = true
+  disableSpecial1stPost = true
+  author = "CaiJJ"
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
