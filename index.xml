@@ -5,7 +5,7 @@ C \approx 6ND
 $$&lt;p>参数量乘上 token 数，再乘以 6，就能估算训练计算量。一个那么复杂的 Transformer，真能这么算？&lt;/p>
 &lt;p>这个公式确实有用。不过，要把它变成可靠的训练预算，还得知道那个 6 从哪来、它省略了什么，以及算出来的数字如何换成天数。&lt;/p>
 &lt;p>本文以 Adam Casson 的 &lt;a href="https://www.adamcasson.com/posts/transformer-flops">Transformer FLOPs&lt;/a> 为计算量部分的线索，结合 Jianbin Chang 的 &lt;a href="https://shjwudp.github.io/blog/2023/gpt-training-memory-estimation-nemo-training-practice/">GPT Training Memory Estimation — NeMo Practice&lt;/a> 讨论显存约束。下面主要考虑稠密、decoder-only Transformer 的全参数训练；MoE、参数高效微调和推理需要另算。&lt;/p>
-&lt;p>&lt;strong>先把三个容易混在一起的量分开&lt;/strong>&lt;/p>
+&lt;h2 id="先把三个容易混在一起的量分开">&lt;strong>先把三个容易混在一起的量分开&lt;/strong>&lt;/h2>
 &lt;p>估算训练资源时，我们实际上在问三个问题：&lt;/p>
 &lt;table>
 &lt;thead>
@@ -35,7 +35,7 @@ $$&lt;p>参数量乘上 token 数，再乘以 6，就能估算训练计算量。
 &lt;/table>
 &lt;p>可以把它们想成做饭：计算量是要处理多少食材，算力是处理食材的速度，显存是操作台有多大。操作台不够，得分批处理，或者把一些东西临时挪走；这些安排又会影响速度。&lt;/p>
 &lt;p>这也解释了为什么“模型权重能放进显存”和“模型能训练起来”之间，还有很长一段距离。&lt;/p>
-&lt;p>&lt;strong>那个 6，是从矩阵乘法里来的&lt;/strong>&lt;/p>
+&lt;h2 id="那个-6是从矩阵乘法里来的">&lt;strong>那个 6，是从矩阵乘法里来的&lt;/strong>&lt;/h2>
 &lt;p>先看一个普通的线性层：&lt;/p>
 $$
 Y=XW
