@@ -1,39 +1,80 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>CaiJJ's Blog</title><link>https://cjj203.github.io/</link><description>Recent content on CaiJJ's Blog</description><generator>Hugo -- 0.152.2</generator><language>zh-cn</language><lastBuildDate>Sun, 23 Nov 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://cjj203.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>博客搭建指南</title><link>https://cjj203.github.io/posts/20251123-blog-tutorial/</link><pubDate>Sun, 23 Nov 2025 00:00:00 +0000</pubDate><guid>https://cjj203.github.io/posts/20251123-blog-tutorial/</guid><description>&lt;h1 id="个人博客搭建指南"&gt;个人博客搭建指南&lt;/h1&gt;
-&lt;p&gt;欢迎阅读本博客搭建指南！本文将指导你如何使用 Hugo 和 PaperMod 主题来创建一个漂亮且功能强大的个人博客。&lt;/p&gt;
-&lt;h2 id="-一安装-hugo"&gt;🚀 一、安装 Hugo&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;brew install hugo
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看是否安装成功：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;hugo version
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="-二创建你的博客项目"&gt;📂 二、创建你的博客项目&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;hugo new site myblog
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;cd myblog
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="-三安装-papermod-主题"&gt;🎨 三、安装 PaperMod 主题&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git init
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;git submodule add https://github.com/adityatelange/hugo-PaperMod themes/PaperMod
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;然后修改 &lt;code&gt;hugo.toml&lt;/code&gt;：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-toml" data-lang="toml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;theme&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;PaperMod&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="-四最终配置"&gt;📝 四、最终配置&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-toml" data-lang="toml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;baseURL&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;https://{{github_username}}.github.io/&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;languageCode&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;zh-cn&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;title&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;My Blog&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;theme&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;PaperMod&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[&lt;span style="color:#a6e22e"&gt;params&lt;/span&gt;]
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;defaultTheme&lt;/span&gt; = &lt;span style="color:#e6db74"&gt;&amp;#34;auto&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;showReadingTime&lt;/span&gt; = &lt;span style="color:#66d9ef"&gt;true&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;showCodeCopyButtons&lt;/span&gt; = &lt;span style="color:#66d9ef"&gt;true&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;showToc&lt;/span&gt; = &lt;span style="color:#66d9ef"&gt;true&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;[&lt;span style="color:#a6e22e"&gt;outputs&lt;/span&gt;]
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#a6e22e"&gt;home&lt;/span&gt; = [&lt;span style="color:#e6db74"&gt;&amp;#34;HTML&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;RSS&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;JSON&amp;#34;&lt;/span&gt;]
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;这个配置：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;自动支持亮/暗模式&lt;/li&gt;
-&lt;li&gt;首页支持 RSS + JSON（给搜索引擎 &amp;amp; 搜索插件用）&lt;/li&gt;
-&lt;li&gt;显示阅读时间&lt;/li&gt;
-&lt;li&gt;代码块支持一键复制&lt;/li&gt;
-&lt;li&gt;文章目录支持&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="-五创建你的第一篇文章"&gt;✍️ 五、创建你的第一篇文章&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;hugo new posts/hello-world.md
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;打开生成的： &lt;code&gt;content/posts/hello-world.md&lt;/code&gt; 文件，编辑内容：&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>CaiJJ's Blog</title><link>https://cjj203.github.io/</link><description>Recent content on CaiJJ's Blog</description><generator>Hugo -- 0.148.2</generator><language>zh-cn</language><lastBuildDate>Mon, 29 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://cjj203.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>训练一个大语言模型，到底要算多少？从 6ND 说起</title><link>https://cjj203.github.io/posts/20251229-model-resource-calculation/</link><pubDate>Mon, 29 Dec 2025 00:00:00 +0000</pubDate><guid>https://cjj203.github.io/posts/20251229-model-resource-calculation/</guid><description>&lt;p>假设手里有一批 GPU，准备训练一个 7B 模型。最先冒出来的问题往往很直接：这些卡够不够？要跑多久？把上下文从 2K 拉到 8K，会贵多少？&lt;/p>
+&lt;p>查资料时，很容易碰到一个简洁得有点让人不放心的公式：&lt;/p>
+$$
+C \approx 6ND
+$$&lt;p>参数量乘上 token 数，再乘以 6，就能估算训练计算量。一个那么复杂的 Transformer，真能这么算？&lt;/p>
+&lt;p>这个公式确实有用。不过，要把它变成可靠的训练预算，还得知道那个 6 从哪来、它省略了什么，以及算出来的数字如何换成天数。&lt;/p>
+&lt;p>本文以 Adam Casson 的 &lt;a href="https://www.adamcasson.com/posts/transformer-flops">Transformer FLOPs&lt;/a> 为计算量部分的线索，结合 Jianbin Chang 的 &lt;a href="https://shjwudp.github.io/blog/2023/gpt-training-memory-estimation-nemo-training-practice/">GPT Training Memory Estimation — NeMo Practice&lt;/a> 讨论显存约束。下面主要考虑稠密、decoder-only Transformer 的全参数训练；MoE、参数高效微调和推理需要另算。&lt;/p>
+&lt;p>&lt;strong>先把三个容易混在一起的量分开&lt;/strong>&lt;/p>
+&lt;p>估算训练资源时，我们实际上在问三个问题：&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>量&lt;/th>
+&lt;th>回答的问题&lt;/th>
+&lt;th>常见单位&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>计算量 FLOPs&lt;/td>
+&lt;td>总共要做多少次浮点运算？&lt;/td>
+&lt;td>FLOPs、PFLOPs&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>算力 FLOP/s&lt;/td>
+&lt;td>每秒能完成多少次浮点运算？&lt;/td>
+&lt;td>TFLOP/s、PFLOP/s&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>显存&lt;/td>
+&lt;td>训练过程中要同时存下多少东西？&lt;/td>
+&lt;td>GB、GiB&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>可以把它们想成做饭：计算量是要处理多少食材，算力是处理食材的速度，显存是操作台有多大。操作台不够，得分批处理，或者把一些东西临时挪走；这些安排又会影响速度。&lt;/p>
+&lt;p>这也解释了为什么“模型权重能放进显存”和“模型能训练起来”之间，还有很长一段距离。&lt;/p>
+&lt;p>&lt;strong>那个 6，是从矩阵乘法里来的&lt;/strong>&lt;/p>
+&lt;p>先看一个普通的线性层：&lt;/p>
+$$
+Y=XW
+$$&lt;p>假设输入有 $T$ 个 token，$X$ 的形状是 $T\times h$，权重 $W$ 的形状是 $h\times k$。矩阵乘法的主要计算量约为：&lt;/p></description></item><item><title>博客搭建指南</title><link>https://cjj203.github.io/posts/20251123-blog-tutorial/</link><pubDate>Sun, 23 Nov 2025 00:00:00 +0000</pubDate><guid>https://cjj203.github.io/posts/20251123-blog-tutorial/</guid><description>&lt;h1 id="个人博客搭建指南">个人博客搭建指南&lt;/h1>
+&lt;p>欢迎阅读本博客搭建指南！本文将指导你如何使用 Hugo 和 PaperMod 主题来创建一个漂亮且功能强大的个人博客。&lt;/p>
+&lt;h2 id="-一安装-hugo">🚀 一、安装 Hugo&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>brew install hugo
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>查看是否安装成功：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>hugo version
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="-二创建你的博客项目">📂 二、创建你的博客项目&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>hugo new site myblog
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cd myblog
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="-三安装-papermod-主题">🎨 三、安装 PaperMod 主题&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>git init
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>git submodule add https://github.com/adityatelange/hugo-PaperMod themes/PaperMod
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>然后修改 &lt;code>hugo.toml&lt;/code>：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-toml" data-lang="toml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">theme&lt;/span> = &lt;span style="color:#e6db74">&amp;#34;PaperMod&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="-四最终配置">📝 四、最终配置&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-toml" data-lang="toml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">baseURL&lt;/span> = &lt;span style="color:#e6db74">&amp;#34;https://{{github_username}}.github.io/&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">languageCode&lt;/span> = &lt;span style="color:#e6db74">&amp;#34;zh-cn&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">title&lt;/span> = &lt;span style="color:#e6db74">&amp;#34;My Blog&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">theme&lt;/span> = &lt;span style="color:#e6db74">&amp;#34;PaperMod&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[&lt;span style="color:#a6e22e">params&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">defaultTheme&lt;/span> = &lt;span style="color:#e6db74">&amp;#34;auto&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">showReadingTime&lt;/span> = &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">showCodeCopyButtons&lt;/span> = &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">showToc&lt;/span> = &lt;span style="color:#66d9ef">true&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[&lt;span style="color:#a6e22e">outputs&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">home&lt;/span> = [&lt;span style="color:#e6db74">&amp;#34;HTML&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;RSS&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;JSON&amp;#34;&lt;/span>]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>这个配置：&lt;/p>
+&lt;ul>
+&lt;li>自动支持亮/暗模式&lt;/li>
+&lt;li>首页支持 RSS + JSON（给搜索引擎 &amp;amp; 搜索插件用）&lt;/li>
+&lt;li>显示阅读时间&lt;/li>
+&lt;li>代码块支持一键复制&lt;/li>
+&lt;li>文章目录支持&lt;/li>
+&lt;/ul>
+&lt;h2 id="-五创建你的第一篇文章">✍️ 五、创建你的第一篇文章&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>hugo new posts/hello-world.md
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>打开生成的： &lt;code>content/posts/hello-world.md&lt;/code> 文件，编辑内容：&lt;/p></description></item></channel></rss>
