@@ -1,0 +1,12 @@
+# Local image-generation prompts and profiling intermediates.
+/assets/generated-images/*prompts.txt
+/experiments/nsight-reports/*-raw.csv
+/experiments/ncu-*.csv
+/experiments/ncu-summary.json
+
+# Local execution artifacts.
+__pycache__/
+*.py[cod]
+*.log
+*.tmp
+.DS_Store
