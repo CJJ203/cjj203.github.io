@@ -255,7 +255,7 @@ Naive 的额外显存随 $N^2$ 增长，Triton kernel 只需额外分配输出�
 
 **采集报告**
 
-Nsight Compute 分为命令行工具 `ncu` 和图形界面 `ncu-ui`。这里在 H800 上用 `ncu` 采集，再把报告拷回 Mac 查看；采集端版本为 2025.3.1，本机 GUI 为 2026.3.1。
+Nsight Compute 分为命令行工具 `ncu` 和图形界面 `ncu-ui`。这里在 H800 上用 `ncu` 采集，再把报告拷回 Mac 查看。
 
 [`bench_attention.py`](experiments/bench_attention.py) 的 `--profile` 分支固定使用 `[1, 8, 4096, 64]` 的 FP16 输入。先执行 3 次 warmup，完成 Triton 编译，再用 CUDA Profiler API 标出一次 attention 调用：
 
@@ -372,7 +372,7 @@ A 的位置 35 对应物理块 3、偏移 3，slot 为 51。每条序列的尾�
 
 ### 4.2 从 KVCacheManager 到 BlockPool
 
-这里使用 vLLM v0.11.0。[KVCacheManager](https://github.com/vllm-project/vllm/blob/v0.11.0/vllm/v1/core/kv_cache_manager.py) 管理请求所持有的块，coordinator 处理不同 KV cache group 的协调，底层物理块由 [BlockPool](https://github.com/vllm-project/vllm/blob/v0.11.0/vllm/v1/core/block_pool.py) 统一分配。
+[KVCacheManager](https://github.com/vllm-project/vllm/blob/v0.11.0/vllm/v1/core/kv_cache_manager.py) 管理请求所持有的块，coordinator 处理不同 KV cache group 的协调，底层物理块由 [BlockPool](https://github.com/vllm-project/vllm/blob/v0.11.0/vllm/v1/core/block_pool.py) 统一分配。
 
 一条请求对应的主要调用为：
 
@@ -530,4 +530,4 @@ $$
 
 ## 6. 总结
 
-Attention 推理中的开销包括计算中间矩阵的读写、长期 KV 的存储，以及不同请求间重复的前缀计算。Online Softmax 使分块 attention 可以保持全局归一化；FlashAttention 将计算融合到 kernel 中，减少中间矩阵的显存访问。vLLM 通过块表、空闲队列和引用计数管理 KV，SGLang 通过 radix tree 查找和保留可复用前缀。分页存储与前缀缓存可以共同使用，vLLM 本身也支持自动前缀缓存。
+Attention 推理中的开销包括计算中间矩阵的读写、长期 KV 的存储，以及不同请求间重复的前缀计算。Online Softmax 使分块 attention 可以保持全局归一化；FlashAttention 将计算融合到 kernel 中，减少中间矩阵的显存访问。vLLM 通过块表、空闲队列和引用计数管理 KV，SGLang 通过 radix tree 查找和保留可复用前缀。
