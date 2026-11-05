@@ -1,5 +1,5 @@
 ---
-title: "vLLM 及 SGLang 的 Attention 优化"
+title: "Attention 优化"
 date: 2026-01-23
 description: ""
 tags: ["llm", "inference", "attention", "triton", "vllm", "sglang"]
@@ -55,9 +55,9 @@ $$
 
 如果把 Q、K、V 分块，每次只算一小块分数，就可以缩小临时存储。
 
-### 2.2 在线更新 softmax 分母
+### 2.2 Online Softmax
 
-稳定 softmax 的写法为：
+naive softmax在指数过大时容易溢出，而减去最大值可以避免指数溢出：
 
 $$
 m=\max_j s_j,\qquad
@@ -65,7 +65,7 @@ m=\max_j s_j,\qquad
 p_j=\frac{e^{s_j-m}}{\ell}
 $$
 
-减去最大值可以避免指数溢出。例如一行包含 `[1000, 1001, 1002]`，直接求指数会溢出；减去 1002 后，只需计算 $e^{-2},e^{-1},1$。
+例如一行包含 `[1000, 1001, 1002]`，直接求指数会溢出；减去 1002 后，只需计算 $e^{-2},e^{-1},1$。
 
 [Online Softmax](https://arxiv.org/abs/1805.02867) 在读取过程中维护最大值 $m$ 和指数和 $\ell$。假设已经处理的部分对应 $(m,\ell)$，新块的统计为 $(m_b,\ell_b)$，合并时有：
 
@@ -330,7 +330,7 @@ Launch Statistics 可以看到每线程寄存器、每个 block 的 shared memor
 
 $B_N$ 增大后，寄存器和共享内存用量增加，occupancy 下降，执行时间却缩短了。更大的 K/V block 减少了循环次数，可能是这组配置更快的原因之一。occupancy 要结合耗时看，数值更高不一定更快。GUI 中的 `Est. Speedup` 也只是分析规则给出的估算，不能当作已经测出的收益。
 
-比较两份报告时，可以先打开 64×64，通过 **Compare → Add Baseline** 保存为基线，再切到 64×128 查看差异。原始报告：[64×64](experiments/nsight-reports/ncu-gui-flash64.ncu-rep)、[64×128](experiments/nsight-reports/ncu-gui-flash128.ncu-rep)、[Naive（gzip，解压后打开）](experiments/nsight-reports/ncu-gui-naive.ncu-rep.gz)。
+比较两份报告时，可以先打开 64×64，通过 **Compare → Add Baseline** 保存为基线，再切到 64×128 查看差异。脱敏报告（账户与个人路径已替换，性能指标保持不变）：[64×64](experiments/nsight-reports/ncu-gui-flash64.ncu-rep)、[64×128](experiments/nsight-reports/ncu-gui-flash128.ncu-rep)、[Naive（gzip，解压后打开）](experiments/nsight-reports/ncu-gui-naive.ncu-rep.gz)。
 
 NCU 为收集指标会 replay kernel，默认的 cache flush 和 clock control 也会影响耗时。因此这里使用同一批报告比较分块配置，与 3.2 节的 CUDA Graph benchmark 分开看，具体见 [Profiling Guide](https://docs.nvidia.com/nsight-compute/ProfilingGuide/index.html#cache-control)。
 

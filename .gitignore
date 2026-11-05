@@ -2,3 +2,17 @@
 /public/
 # Hugo build lock
 .hugo_build.lock
+
+# Local planning notes and generated caches.
+/.planning/
+/resources/_gen/
+.DS_Store
+__pycache__/
+*.py[cod]
+*.log
+*.tmp
+*.temp
+
+# Local experiment data, excluded from both Git and Hugo content.
+/.artifacts/
+/bench-results/

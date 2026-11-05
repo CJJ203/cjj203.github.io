@@ -1,0 +1,27 @@
+# Superseded experiments; retain only final scripts and the small summary.
+/experiments/bench_chat.py
+/experiments/run_benchmarks.py
+/experiments/summarize.py
+/experiments/results.json
+/experiments/summary.json
+/experiments/raw-results.tar.gz
+/experiments/chat-datasets.tar.gz
+
+# Previous figures and raster previews; the article uses final capacity SVGs.
+/assets/concurrency.svg
+/assets/concurrency.png
+/assets/capacity-*.png
+
+# Regenerable working datasets, expanded logs and scratch results.
+/datasets/
+/results/
+/raw/
+
+# Raw experiment records and bundles stay local, not in the blog repository.
+/experiments/*.tar.gz
+/experiments/*-runs.json
+/experiments/*-checksums.sha256
+/experiments/*.jsonl
+/experiments/*-requests.json
+/experiments/*-resources.json
+/bench-results/
