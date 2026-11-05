@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Attention on CaiJJ's Blog</title><link>https://cjj203.github.io/tags/attention/</link><description>Recent content in Attention on CaiJJ's Blog</description><generator>Hugo -- 0.148.2</generator><language>zh-cn</language><lastBuildDate>Fri, 23 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://cjj203.github.io/tags/attention/index.xml" rel="self" type="application/rss+xml"/><item><title>Attention 优化</title><link>https://cjj203.github.io/posts/20261023-attention-inference-optimization/</link><pubDate>Fri, 23 Jan 2026 00:00:00 +0000</pubDate><guid>https://cjj203.github.io/posts/20261023-attention-inference-optimization/</guid><description>&lt;h2 id="1-attention-简介">1. Attention 简介&lt;/h2>
+&lt;p>先讲一些大家耳熟能详的概念。&lt;/p>
+&lt;p>Attention 根据 query 与 key 的相关性，对 value 做加权求和。Transformer 中，输入先经过线性投影得到 Q、K、V；对一个 head，计算为：&lt;/p>
+$$
+S=\frac{QK^\top}{\sqrt d}+M,\qquad
+P=\operatorname{softmax}(S),\qquad
+O=PV
+$$&lt;p>在 self-attention 中，$Q,K,V\in\mathbb{R}^{N\times d}$，$N$ 是序列长度，$d$ 是 head dim。$S_{ij}$ 表示第 $i$ 个 token 对第 $j$ 个 token 的注意力分数，softmax 沿 key 方向逐行计算。缩放因子 $1/\sqrt d$ 用于控制点积的数值范围。&lt;/p>
+&lt;p>语言模型通常采用 causal mask：$j\le i$ 时 $M_{ij}=0$，否则为 $-\infty$。位置 $i$ 只能读取自己和此前的 token。&lt;/p>
+&lt;p>&lt;img alt="Causal Self-Attention：Q 与 K 的点积经过 scale、causal mask 和逐行 softmax，得到权重 P，再与 V 相乘得到输出 O。" loading="lazy" src="https://cjj203.github.io/posts/20261023-attention-inference-optimization/assets/generated-images/attention-mechanism.png">&lt;/p>
+&lt;p>下面是直接按公式写出的 PyTorch 实现。多头输入的形状为 &lt;code>[batch, heads, sequence, head_dim]&lt;/code>，矩阵乘法在最后两个维度上进行：&lt;/p></description></item></channel></rss>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Gpu on CaiJJ's Blog</title><link>https://cjj203.github.io/tags/gpu/</link><description>Recent content in Gpu on CaiJJ's Blog</description><generator>Hugo -- 0.148.2</generator><language>zh-cn</language><lastBuildDate>Thu, 05 Nov 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://cjj203.github.io/tags/gpu/index.xml" rel="self" type="application/rss+xml"/><item><title>LLM 服务性能测试</title><link>https://cjj203.github.io/posts/20261104-llm-serving-benchmark/</link><pubDate>Wed, 04 Feb 2026 00:00:00 +0000</pubDate><guid>https://cjj203.github.io/posts/20261104-llm-serving-benchmark/</guid><description>&lt;p>LLM 服务容量测试的目标，是找出&lt;strong>每路响应速度达标时能够承受的并发路数&lt;/strong>，并明确这一并发对应的输入输出长度和资源开销。整机 tok/s 很高，并不意味着每个用户都足够快；短请求下通过的并发，也不一定适用于长上下文或长回答。&lt;/p>
+&lt;p>本文以单张 RTX 5090 上已经运行的 Qwen3-0.6B 为例，使用 &lt;code>sglang.bench_serving&lt;/code> 的实现发送 &lt;strong>OpenAI 兼容的 &lt;code>/v1/chat/completions&lt;/code> 流式请求&lt;/strong>。按照测试目标、测试范围、测试方法、测试结论、报告出具五部分，给出并发边界、资源占用和长度劣化的实测结果。工具用法参见 &lt;a href="https://docs.sglang.io/docs/developer_guide/bench_serving">SGLang 官方评测指南&lt;/a> 与 &lt;a href="https://docs.sglang.com.cn/developer_guide/bench_serving.html">中文指南&lt;/a>。&lt;/p>
+&lt;h2 id="1-测试目标">1. 测试目标&lt;/h2>
+&lt;h3 id="11-找到满足单路响应标准的最大已验证并发">1.1 找到满足单路响应标准的最大已验证并发&lt;/h3>
+&lt;p>“一路”指一个持续请求的虚拟用户，任一时刻最多有一条 HTTP 请求在执行。客户端设置最大并发 C，请求完成后由后续任务补充，让服务在批次主体阶段维持约 C 条在途请求。本次每组至少 128 条请求、至少 6 轮并发请求，并重复 3 次。&lt;/p>
+&lt;p>先设置一套适用于交互演示的响应标准。它是本次测试采用的 SLO，不是行业统一要求；实际项目应根据用户体验确定。&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>验收项&lt;/th>
+&lt;th>本次标准&lt;/th>
+&lt;th>判定口径&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>单路生成速率&lt;/td>
+&lt;td>至少 &lt;strong>50 token/s&lt;/strong>&lt;/td>
+&lt;td>逐条正式请求计算，所有成功请求均须满足，不能只看平均值或整机吞吐&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>首个输出等待&lt;/td>
+&lt;td>&lt;strong>P99 TTFT ≤500 ms&lt;/strong>&lt;/td>
+&lt;td>每次运行分别判定&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>完整回答等待&lt;/td>
+&lt;td>&lt;strong>P99 E2E ≤10 s&lt;/strong>&lt;/td>
+&lt;td>每次运行分别判定，约束长输出带来的总等待&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>生成期间卡顿&lt;/td>
+&lt;td>&lt;strong>P99 ITL ≤100 ms&lt;/strong>&lt;/td>
+&lt;td>以当前客户端收到的非空流式内容块间隔统计&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>成功与稳定性&lt;/td>
+&lt;td>正式请求全部成功&lt;/td>
+&lt;td>无请求失败、超时或服务重启；未观察到 OOM 类错误，资源采样完整&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>首个输出后的单路生成速率定义为：&lt;/p>
+$$
+R_i=\frac{L_{\mathrm{out},i}-1}{T_{\mathrm{E2E},i}-T_{\mathrm{TTFT},i}}
+\quad\mathrm{token/s}
+$$&lt;p>时间使用秒。&lt;code>R_i ≥50 token/s&lt;/code> 等价于该请求的 &lt;code>TPOT ≤20 ms/token&lt;/code>。它衡量开始输出后的平均生成速度；首个输出等待与完整回答时间另由 TTFT、E2E 限制。逐请求速率要求全部达标，而 TTFT/E2E 使用 P99，不能把两种口径混为“每条请求的所有延迟都不超限”。&lt;/p></description></item></channel></rss>

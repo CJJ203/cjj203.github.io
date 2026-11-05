@@ -1,0 +1,127 @@
+{
+  "vllm_version": "v0.11.0",
+  "source_sha256": {
+    "kv_cache_utils.py": "0824beae09a3a8faeb54e8e0605d1661045e34a33a2026de537e6849a4c78ee4",
+    "block_pool.py": "8cd4b2fe35a26dcf8aa7d8e8ec16922b7cd3e67e02c800026902dad9b1274368"
+  },
+  "python": "3.10.17",
+  "block_size": 16,
+  "physical_blocks": 9,
+  "usable_blocks": 8,
+  "block_tables": {
+    "A": [
+      1,
+      2,
+      3
+    ],
+    "B": [
+      1,
+      2,
+      4
+    ]
+  },
+  "slot_example": {
+    "position": 35,
+    "block_id": 3,
+    "offset": 3,
+    "slot": 51
+  },
+  "capacity_comparison": {
+    "request_lengths": [
+      37,
+      40
+    ],
+    "shared_prefix_tokens": 32,
+    "fixed_max_per_request": 128,
+    "fixed_reserved_slots": 256,
+    "paged_without_sharing_slots": 96,
+    "paged_with_sharing_slots": 64,
+    "unique_valid_tokens": 45
+  },
+  "snapshots": [
+    {
+      "stage": "initial",
+      "free_blocks": 8,
+      "shared_refs": [
+        0,
+        0
+      ],
+      "prefix_cached": [
+        false,
+        false
+      ]
+    },
+    {
+      "stage": "A allocated and first 32 tokens cached",
+      "free_blocks": 5,
+      "shared_refs": [
+        1,
+        1
+      ],
+      "prefix_cached": [
+        true,
+        true
+      ]
+    },
+    {
+      "stage": "B shares first two blocks",
+      "free_blocks": 4,
+      "shared_refs": [
+        2,
+        2
+      ],
+      "prefix_cached": [
+        true,
+        true
+      ]
+    },
+    {
+      "stage": "A finished",
+      "free_blocks": 5,
+      "shared_refs": [
+        1,
+        1
+      ],
+      "prefix_cached": [
+        true,
+        true
+      ]
+    },
+    {
+      "stage": "B finished",
+      "free_blocks": 8,
+      "shared_refs": [
+        0,
+        0
+      ],
+      "prefix_cached": [
+        true,
+        true
+      ]
+    },
+    {
+      "stage": "cached prefix touched again",
+      "free_blocks": 6,
+      "shared_refs": [
+        1,
+        1
+      ],
+      "prefix_cached": [
+        true,
+        true
+      ]
+    },
+    {
+      "stage": "all eight blocks reassigned",
+      "free_blocks": 0,
+      "shared_refs": [
+        1,
+        1
+      ],
+      "prefix_cached": [
+        false,
+        false
+      ]
+    }
+  ]
+}

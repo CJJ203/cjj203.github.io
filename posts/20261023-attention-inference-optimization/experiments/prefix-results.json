@@ -1,0 +1,57 @@
+[
+  {
+    "workload": "unique",
+    "capacity_tokens": 32768,
+    "requests": 100,
+    "input_tokens": 25600,
+    "reused_tokens": 0,
+    "token_reuse_rate": 0.0,
+    "requests_with_hit": 0,
+    "evicted_tokens": 0,
+    "resident_tokens": 25600
+  },
+  {
+    "workload": "shared192",
+    "capacity_tokens": 32768,
+    "requests": 100,
+    "input_tokens": 25600,
+    "reused_tokens": 19008,
+    "token_reuse_rate": 0.7425,
+    "requests_with_hit": 99,
+    "evicted_tokens": 0,
+    "resident_tokens": 6592
+  },
+  {
+    "workload": "four_groups",
+    "capacity_tokens": 32768,
+    "requests": 100,
+    "input_tokens": 25600,
+    "reused_tokens": 18576,
+    "token_reuse_rate": 0.725625,
+    "requests_with_hit": 99,
+    "evicted_tokens": 0,
+    "resident_tokens": 7024
+  },
+  {
+    "workload": "shared192",
+    "capacity_tokens": 512,
+    "requests": 100,
+    "input_tokens": 25600,
+    "reused_tokens": 19008,
+    "token_reuse_rate": 0.7425,
+    "requests_with_hit": 99,
+    "evicted_tokens": 6080,
+    "resident_tokens": 512
+  },
+  {
+    "workload": "four_groups",
+    "capacity_tokens": 512,
+    "requests": 100,
+    "input_tokens": 25600,
+    "reused_tokens": 4752,
+    "token_reuse_rate": 0.185625,
+    "requests_with_hit": 99,
+    "evicted_tokens": 20384,
+    "resident_tokens": 464
+  }
+]
